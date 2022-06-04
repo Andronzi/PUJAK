@@ -5,11 +5,13 @@
     </Header>
     <Content :header="true" :footer="false" :scroll="true" :scrollbar="true">
       <b>canvas</b>
-      <Item itemName="худи"></Item>
       <p>ee</p>
       <p id="id"></p>
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
+      </div>
+      <div :key="index" v-for="(item, index) in storeData">
+        <Item :itemName="item.label" :url="item.url" :cost="item.cost"></Item>
       </div>
       <div id="console"></div>
       <!-- {{ createQR() }} -->
@@ -61,6 +63,7 @@ export default {
       // },
       count: 0,
       spinner: true,
+      storeData: [],
     };
   },
   mounted() {
@@ -125,6 +128,10 @@ export default {
         console.log("da" + err);
         document.getElementById("id").innerHTML = JSON.stringify(err);
       });
+
+    axios("http://nl.arturka.net:8000/market/").then((response) => {
+      this.storeData = response.data;
+    });
   },
 };
 </script>
