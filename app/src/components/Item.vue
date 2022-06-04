@@ -9,15 +9,10 @@
       {{ itemName }}
     </p>
     <div class="mt-6">
-      <Button class="w-28" @setBarcode="setBarcode">
+      <Button class="w-28" @setBarcode="setBarcode" :cost="cost">
         <template slot="text">Купить за {{ cost }}</template>
-        <!--<template slot="icon">icon html</template>-->
       </Button>
     </div>
-    <!-- <div v-if="barcode" class="mx-2 mt-6 text-center">
-      <b>Result:</b>
-      <br />
-    </div> -->
   </div>
 </template>
 
@@ -28,6 +23,7 @@ export default {
   components: {
     Button,
   },
+
   props: {
     url: {
       type: String,
@@ -37,16 +33,21 @@ export default {
       default: "",
     },
     cost: {
-      type: String,
+      type: Number,
     },
   },
 
-  methods: {
-    setBarcode(barcode) {
-      console.log(barcode);
-    },
+  data() {
+    return {
+      storeCost: 0,
+    };
+  },
 
-    setItemId() {},
+  methods: {
+    setBarcode(barcode, cost) {
+      this.id = barcode;
+      console.log(cost);
+    },
   },
 };
 </script>

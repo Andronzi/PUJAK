@@ -4,6 +4,9 @@
       <CloseButton />
     </Header>
     <Content :header="true" :footer="false" :scroll="true" :scrollbar="true">
+      <div class="balance">
+        <p>Ваш баланс равен:</p>
+      </div>
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
       </div>
@@ -79,7 +82,6 @@ export default {
     //   return setId(response.data.id);
     // });
     let save_id;
-    document.getElementById("id").innerHTML = "123";
     getId()
       .catch(() => {
         return axios("http://nl.arturka.net:8000/user/").then((response) => {
@@ -109,24 +111,34 @@ export default {
       })
       .then((data) => {
         this.id = data;
-        document.getElementById("id").innerHTML = this.id;
       })
       .then(() => {
         qrcode.toCanvas(
           document.querySelector(".qr-content"),
           this.id,
           (err) => {
-            console.log(err);
+            console.log("err1" + err);
           }
         );
       })
       .catch((err) => {
-        document.getElementById("id").innerHTML = JSON.stringify(err);
+        console.log("err2" + err);
       });
 
     axios("http://nl.arturka.net:8000/market/").then((response) => {
       this.storeData = response.data;
     });
+
+    axios(
+      `http://nl.arturka.net:8000/user/update?id=${this.id}method[set]value=1000integertarget=points`
+    );
+
+    let balance = document.querySelector(".balance");
+    setInterval(() => {
+      axios(`http://nl.arturka.net:8000/user/${this.id}`).then((response) => {
+        balance.innerHTML = response.data.points;
+      });
+    }, 1000);
   },
 };
 </script>
