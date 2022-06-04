@@ -4,4 +4,5 @@ module.exports = defineConfig({
   publicPath: "",
   productionSourceMap: false,
   devServer: { port: 3000 },
+  chainWebpack: (config) => config.optimization.minimize(false),
 });

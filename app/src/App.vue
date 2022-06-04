@@ -11,6 +11,7 @@
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
       </div>
+      <div id="console"></div>
       <!-- {{ createQR() }} -->
       <!--<Shimmer />-->
       <!--<SurveyCard-->
@@ -67,26 +68,47 @@ export default {
     //   console.log(response.data);
     //   return response.data;
     // });
+    // axios("http://nl.arturka.net:8000/user/").then((response) => {
+    //   console.log(response);
+    //   return setId(response.data.id);
+    // });
+    let save_id;
     document.getElementById("id").innerHTML = "123";
-    getId(document.getElementById("id"))
-      .then((data) => {
-        console.log(data);
-        if (data != undefined) {
-          document.getElementById("id").innerHTML = "\n иф сработал";
-          return data;
-        } else {
-          axios("http://nl.arturka.net:8000/user/")
-            .then((response) => {
-              document.getElementById("id").innerHTML =
-                "\n axios" + response.data.id;
-              return response.data;
-            })
-            .then((data) => {
-              return setId(data.id);
-            });
-        }
+    getId()
+      .catch(() => {
+        console.log("OBASRALCYA");
+        return axios("http://nl.arturka.net:8000/user/").then((response) => {
+          console.log("response1" + response);
+          return response.data.id;
+        });
       })
       .then((data) => {
+        console.log("post getid" + data);
+        if (data.length) {
+          return data;
+        } else {
+          return axios("http://nl.arturka.net:8000/user/").then(
+            async (response) => {
+              console.log("response2" + response);
+              //save_id = response.data.id;
+              let ret;
+              try {
+                ret = await setId(response.data.id);
+              } catch (e) {
+                return response.data.id;
+              }
+
+              return ret;
+            }
+          );
+        }
+      })
+      .catch(() => {
+        console.log("lovim govno");
+        return save_id;
+      })
+      .then((data) => {
+        console.log("КОНЕЦ" + data);
         this.id = data;
         document.getElementById("id").innerHTML = this.id;
       })
@@ -95,12 +117,12 @@ export default {
           document.querySelector(".qr-content"),
           this.id,
           (err) => {
-            console.log(err);
+            console.log("gg" + err);
           }
         );
       })
       .catch((err) => {
-        console.log(err);
+        console.log("da" + err);
         document.getElementById("id").innerHTML = JSON.stringify(err);
       });
   },
