@@ -10,8 +10,14 @@
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
       </div>
-      <div :key="index" v-for="(item, index) in storeData">
-        <Item :itemName="item.label" :url="item.url" :cost="item.cost"></Item>
+      <div class="container flex items-center flex-wrap">
+        <div
+          :key="index"
+          v-for="(item, index) in storeData"
+          class="ml-10 mt-10"
+        >
+          <Item :itemName="item.label" :url="item.url" :cost="item.cost"></Item>
+        </div>
       </div>
       <div id="console"></div>
       <!-- {{ createQR() }} -->

@@ -1,10 +1,11 @@
 <template>
   <button
-    class="text-center px-4 py-2 rounded-md transition-all shadow-md ring-2 font-semibold"
+    style="min-width: 150px"
+    class="text-center px-4 py-2 rounded-md transition-all shadow-md font-normal"
     :class="
       danger
         ? 'bg-white ring-red-500 active:ring-red-400 active:bg-red-50 m-0.5'
-        : 'text-white bg-orange-500 ring-orange-500 active:bg-orange-400 active:ring-orange-400'
+        : 'text-white bg-orange-500 ring-orange-500 bg-sky-500/100 active:ring-orange-400'
     "
     @click="onClick"
   >
@@ -18,10 +19,10 @@
         <slot name="icon" />
       </div>
       <div
-        class="text-lg text-center w-full transition-padding"
+        class="text-base text-center w-full transition-padding"
         :class="isLoading || $slots.icon ? 'pl-9 -ml-7' : ''"
       >
-        <slot name="text" />
+        <slot name="text"/>
       </div>
     </div>
   </button>
