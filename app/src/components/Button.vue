@@ -22,7 +22,7 @@
         class="text-base text-center w-full transition-padding"
         :class="isLoading || $slots.icon ? 'pl-9 -ml-7' : ''"
       >
-        <slot name="text"/>
+        <slot name="text" />
       </div>
     </div>
   </button>

@@ -3,15 +3,12 @@ import moby from "@mobyapps/moby.js";
 
 /* eslint-disable */
 async function getId() {
-  console.log("getID");
   await moby.sqlite.run(
     "CREATE TABLE IF NOT EXISTS id_table (id TEXT UNIQUE)",
     "miniapp"
   );
-  console.log("CREATE TABLE");
   let storage_type = moby.sqlite.db_type.miniapp;
   let rv = await moby.sqlite.get("SELECT id FROM id_table", storage_type);
-  console.log("RESULT" + rv);
   return rv;
 }
 

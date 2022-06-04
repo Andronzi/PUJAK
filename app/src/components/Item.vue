@@ -10,7 +10,7 @@
     </p>
     <div class="mt-6">
       <Button class="w-28" @setBarcode="setBarcode">
-        <template slot="text">Купить {{ cost }}</template>
+        <template slot="text">Купить за {{ cost }}</template>
         <!--<template slot="icon">icon html</template>-->
       </Button>
     </div>
