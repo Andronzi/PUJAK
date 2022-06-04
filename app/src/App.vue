@@ -6,6 +6,8 @@
     <Content :header="true" :footer="false" :scroll="true" :scrollbar="true">
       <b>canvas</b>
       <Item itemName="худи"></Item>
+      <p>ee</p>
+      <p id="id"></p>
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
       </div>
@@ -31,6 +33,7 @@ import Content from "./components/Content.vue";
 import qrcode from "qrcode";
 import { getId, setId } from "./utils";
 import Item from "./components/Item.vue";
+import axios from "axios";
 // import SurveyCard from "./components/SurveyCard";
 // import Shimmer from "./components/Shimmer";
 // import Spinner from "./components/Spinner";
@@ -60,15 +63,33 @@ export default {
     };
   },
   mounted() {
-    getId()
+    // axios("http://nl.arturka.net:8000/user/").then((response) => {
+    //   console.log(response.data);
+    //   return response.data;
+    // });
+    document.getElementById("id").innerHTML = "123";
+    getId(document.getElementById("id"))
       .then((data) => {
+        console.log(data);
         if (data != undefined) {
+          document.getElementById("id").innerHTML = "\n иф сработал";
           return data;
         } else {
-          return setId();
+          axios("http://nl.arturka.net:8000/user/")
+            .then((response) => {
+              document.getElementById("id").innerHTML =
+                "\n axios" + response.data.id;
+              return response.data;
+            })
+            .then((data) => {
+              return setId(data.id);
+            });
         }
       })
-      .then((data) => (this.id = data))
+      .then((data) => {
+        this.id = data;
+        document.getElementById("id").innerHTML = this.id;
+      })
       .then(() => {
         qrcode.toCanvas(
           document.querySelector(".qr-content"),
@@ -80,6 +101,7 @@ export default {
       })
       .catch((err) => {
         console.log(err);
+        document.getElementById("id").innerHTML = JSON.stringify(err);
       });
   },
 };
