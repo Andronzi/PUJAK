@@ -3,6 +3,7 @@ import cors from "cors"
 import sqlite3 from "sqlite3"
 
 import userRouter from "./routes/user.js"
+import marketRouter from "./routes/market.js"
 
 const sqliteApi = sqlite3.verbose()
 const db = new sqliteApi.Database("./u.db", sqlite3.OPEN_READWRITE, err => {
@@ -14,6 +15,7 @@ const app = express()
 app.use(express.json({limit: '50mb'}))
     .use(cors())
     .use("/user", userRouter)
+    .use("/market", marketRouter)
     .set("db", db)
 
 const port = 8000
