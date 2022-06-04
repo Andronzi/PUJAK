@@ -1,5 +1,6 @@
 <template>
   <button
+    id="buy-button"
     style="min-width: 150px"
     class="text-center px-4 py-2 rounded-md transition-all shadow-md font-normal"
     :class="
@@ -7,7 +8,7 @@
         ? 'bg-white ring-red-500 active:ring-red-400 active:bg-red-50 m-0.5'
         : 'text-white bg-orange-500 ring-orange-500 bg-sky-500/100 active:ring-orange-400'
     "
-    @click="onClick"
+    @click="onClick(cost)"
   >
     <div class="flex items-center">
       <LoadingIcon
@@ -38,6 +39,9 @@ export default {
     danger: {
       type: Boolean,
       default: false,
+    },
+    cost: {
+      type: Number,
     },
   },
   components: {

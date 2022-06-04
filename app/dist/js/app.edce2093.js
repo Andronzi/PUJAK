@@ -2,14 +2,14 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2026:
+/***/ 9608:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
 // EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
 var vue_runtime_esm = __webpack_require__(8935);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=708610a6&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('b',[_vm._v("canvas")]),_c('p',[_vm._v("ee")]),_c('p',{attrs:{"id":"id"}}),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=355f8d34&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('div',[_c('p',{staticClass:"balance"},[_vm._v("Ваш баланс равен:")])]),_c('canvas',{staticClass:"canvas"}),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28 bg-sky-500/100",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Сканировать QR")])],2)],1),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
 var staticRenderFns = []
 
 
@@ -135,13 +135,13 @@ var CloseButton_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const CloseButton = (CloseButton_component.exports);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Content.vue?vue&type=template&id=8cdfe5a0&
-var Contentvue_type_template_id_8cdfe5a0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-screen",class:[
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Content.vue?vue&type=template&id=10e3dfb6&
+var Contentvue_type_template_id_10e3dfb6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-screen",class:[
     _vm.header ? 'mt-[var(--header-sait)]' : '',
     _vm.calc_height,
     _vm.scroll ? 'overflow-y-auto' : 'overflow-hidden',
     _vm.scrollbar ? 'scrollbar' : '' ],attrs:{"hidden":_vm.hidden},on:{"scroll":_vm.onscroll}},[_vm._t("default")],2)}
-var Contentvue_type_template_id_8cdfe5a0_staticRenderFns = []
+var Contentvue_type_template_id_10e3dfb6_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Content.vue?vue&type=script&lang=ts&
@@ -196,12 +196,10 @@ var Contentvue_type_template_id_8cdfe5a0_staticRenderFns = []
       if (this.header) {
         if (this.footer)
           return "h-[calc(100vh-var(--header-sait)-var(--footer-saib))]";
-        // both
-        else return "h-[calc(100vh-var(--header-sait))]"; // just header
+        else return "h-[calc(100vh-var(--header-sait))]";
       } else {
         if (this.footer) return "h-[calc(100vh-var(--footer-saib))]";
-        // just footer
-        else return "h-screen"; // default
+        else return "h-screen";
       }
     },
   },
@@ -237,8 +235,8 @@ var Contentvue_type_template_id_8cdfe5a0_staticRenderFns = []
 ;
 var Content_component = (0,componentNormalizer/* default */.Z)(
   components_Contentvue_type_script_lang_ts_,
-  Contentvue_type_template_id_8cdfe5a0_render,
-  Contentvue_type_template_id_8cdfe5a0_staticRenderFns,
+  Contentvue_type_template_id_10e3dfb6_render,
+  Contentvue_type_template_id_10e3dfb6_staticRenderFns,
   false,
   null,
   null,
@@ -247,43 +245,106 @@ var Content_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const Content = (Content_component.exports);
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=0f5c3ee4&
+var Itemvue_type_template_id_0f5c3ee4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_vm._v(" Купить за "+_vm._s(_vm.itemName)+" ")])])])}
+var Itemvue_type_template_id_0f5c3ee4_staticRenderFns = []
+
+
 // EXTERNAL MODULE: ./node_modules/qrcode/lib/browser.js
 var browser = __webpack_require__(8733);
-;// CONCATENATED MODULE: ./src/utils.js
+// EXTERNAL MODULE: ./node_modules/sjcl/sjcl.js
+var sjcl = __webpack_require__(5846);
+var sjcl_default = /*#__PURE__*/__webpack_require__.n(sjcl);
+;// CONCATENATED MODULE: ./src/config.js
 /* eslint-disable */
-
-/* eslint-disable */
-
-async function getId() {
-  console.log("getID");
-  await moby_default().sqlite.run("CREATE TABLE IF NOT EXISTS id_table (id TEXT UNIQUE)", "miniapp");
-  console.log("CREATE TABLE");
-  let storage_type = (moby_default()).sqlite.db_type.miniapp;
-  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
-  console.log("RESULT" + rv);
-  return rv;
-}
-/* eslint-disable */
+const SERVER = "http://nl.arturka.net:8000/";
+const SEKRET_KEY = "yde5rfutihj8femqi";
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=script&lang=ts&
 
 
-async function setId(id) {
-  let storage_type = (moby_default()).sqlite.db_type.miniapp;
-  await moby_default().sqlite.run(`INSERT INTO id_table (id) VALUES ("${id}")`, storage_type);
-  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
-  return rv;
-}
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=b6d80c0c&
-var Itemvue_type_template_id_b6d80c0c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Купить "+_vm._s(_vm.cost))])],2)],1)])}
-var Itemvue_type_template_id_b6d80c0c_staticRenderFns = []
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Button.vue?vue&type=template&id=92594a82&
-var Buttonvue_type_template_id_92594a82_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"text-center px-4 py-2 rounded-md transition-all shadow-md font-normal",class:_vm.danger
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ const Itemvue_type_script_lang_ts_ = ({
+  name: "Item",
+
+  props: {
+    url: {
+      type: String,
+    },
+    itemName: {
+      type: String,
+      default: "",
+    },
+    cost: {
+      type: Number,
+    },
+  },
+
+  methods: {
+    onClick(name) {
+      browser.toCanvas(
+        document.querySelector(".canvas"),
+        sjcl_default().encrypt(
+          SEKRET_KEY,
+          JSON.stringify({
+            id: sessionStorage.getItem("userId"),
+            name,
+          }),
+          (err) => {
+            console.log("err" + err);
+          }
+        )
+      );
+    },
+  },
+});
+
+;// CONCATENATED MODULE: ./src/components/Item.vue?vue&type=script&lang=ts&
+ /* harmony default export */ const components_Itemvue_type_script_lang_ts_ = (Itemvue_type_script_lang_ts_); 
+;// CONCATENATED MODULE: ./src/components/Item.vue
+
+
+
+
+
+/* normalize component */
+;
+var Item_component = (0,componentNormalizer/* default */.Z)(
+  components_Itemvue_type_script_lang_ts_,
+  Itemvue_type_template_id_0f5c3ee4_render,
+  Itemvue_type_template_id_0f5c3ee4_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ const Item = (Item_component.exports);
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Button.vue?vue&type=template&id=ca1b13ec&
+var Buttonvue_type_template_id_ca1b13ec_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"text-center px-4 py-2 rounded-md transition-all shadow-md font-normal",class:_vm.danger
       ? 'bg-white ring-red-500 active:ring-red-400 active:bg-red-50 m-0.5'
-      : 'text-white bg-orange-500 ring-orange-500 bg-sky-500/100 active:ring-orange-400',staticStyle:{"min-width":"150px"},on:{"click":_vm.onClick}},[_c('div',{staticClass:"flex items-center"},[_c('LoadingIcon',{staticClass:"w-7 px-0.5 animate-spin-slow",attrs:{"stroke":_vm.danger ? 'rgb(249 115 22)' : '#fffff0',"className":_vm.isLoading ? 'block' : 'hidden'}}),((!_vm.isLoading ? _vm.isLoading : false) || _vm.$slots.icon)?_c('div',{staticClass:"w-7"},[_vm._t("icon")],2):_vm._e(),_c('div',{staticClass:"text-base text-center w-full transition-padding",class:_vm.isLoading || _vm.$slots.icon ? 'pl-9 -ml-7' : ''},[_vm._t("text")],2)],1)])}
-var Buttonvue_type_template_id_92594a82_staticRenderFns = []
+      : 'text-white bg-orange-500 ring-orange-500 bg-sky-500/100 active:ring-orange-400',staticStyle:{"min-width":"150px"},attrs:{"id":"buy-button"},on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_c('div',{staticClass:"flex items-center"},[_c('LoadingIcon',{staticClass:"w-7 px-0.5 animate-spin-slow",attrs:{"stroke":_vm.danger ? 'rgb(249 115 22)' : '#fffff0',"className":_vm.isLoading ? 'block' : 'hidden'}}),((!_vm.isLoading ? _vm.isLoading : false) || _vm.$slots.icon)?_c('div',{staticClass:"w-7"},[_vm._t("icon")],2):_vm._e(),_c('div',{staticClass:"text-base text-center w-full transition-padding",class:_vm.isLoading || _vm.$slots.icon ? 'pl-9 -ml-7' : ''},[_vm._t("text")],2)],1)])}
+var Buttonvue_type_template_id_ca1b13ec_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/LoadingIcon.vue?vue&type=template&id=23a28844&
@@ -451,12 +512,16 @@ var LoadingIcon_component = (0,componentNormalizer/* default */.Z)(
 
 
 
+
 /* harmony default export */ const Buttonvue_type_script_lang_ts_ = ({
   name: "Button",
   props: {
     danger: {
       type: Boolean,
       default: false,
+    },
+    cost: {
+      type: Number,
     },
   },
   components: {
@@ -487,8 +552,8 @@ var LoadingIcon_component = (0,componentNormalizer/* default */.Z)(
 ;
 var Button_component = (0,componentNormalizer/* default */.Z)(
   components_Buttonvue_type_script_lang_ts_,
-  Buttonvue_type_template_id_92594a82_render,
-  Buttonvue_type_template_id_92594a82_staticRenderFns,
+  Buttonvue_type_template_id_ca1b13ec_render,
+  Buttonvue_type_template_id_ca1b13ec_staticRenderFns,
   false,
   null,
   null,
@@ -497,84 +562,31 @@ var Button_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const Button = (Button_component.exports);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=script&lang=ts&
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ const Itemvue_type_script_lang_ts_ = ({
-  name: "Item",
-  components: {
-    Button: Button,
-  },
-  props: {
-    url: {
-      type: String,
-    },
-    itemName: {
-      type: String,
-      default: "",
-    },
-    cost: {
-      type: String,
-    },
-  },
-
-  methods: {
-    setBarcode(barcode) {
-      console.log(barcode);
-    },
-
-    setItemId() {},
-  },
-});
-
-;// CONCATENATED MODULE: ./src/components/Item.vue?vue&type=script&lang=ts&
- /* harmony default export */ const components_Itemvue_type_script_lang_ts_ = (Itemvue_type_script_lang_ts_); 
-;// CONCATENATED MODULE: ./src/components/Item.vue
-
-
-
-
-
-/* normalize component */
-;
-var Item_component = (0,componentNormalizer/* default */.Z)(
-  components_Itemvue_type_script_lang_ts_,
-  Itemvue_type_template_id_b6d80c0c_render,
-  Itemvue_type_template_id_b6d80c0c_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ const Item = (Item_component.exports);
 // EXTERNAL MODULE: ./node_modules/axios/index.js
 var axios = __webpack_require__(6166);
 var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
+;// CONCATENATED MODULE: ./src/utils.js
+/* eslint-disable */
+
+/* eslint-disable */
+
+async function getId() {
+  await moby_default().sqlite.run("CREATE TABLE IF NOT EXISTS id_table (id TEXT UNIQUE)", "miniapp");
+  let storage_type = (moby_default()).sqlite.db_type.miniapp;
+  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
+  return rv;
+}
+/* eslint-disable */
+
+
+async function setId(id) {
+  let storage_type = (moby_default()).sqlite.db_type.miniapp;
+  await moby_default().sqlite.run(`INSERT INTO id_table (id) VALUES ("${id}")`, storage_type);
+  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
+  return rv;
+}
+
+
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=script&lang=ts&
 
 
@@ -620,102 +632,110 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 
 
-
-// import SurveyCard from "./components/SurveyCard";
-// import Shimmer from "./components/Shimmer";
-// import Spinner from "./components/Spinner";
-// import Modal from "./components/Modal";
-// import Footer from "./components/Footer";
 /* harmony default export */ const Appvue_type_script_lang_ts_ = ({
   name: "App",
   components: {
-    // SurveyCard,
-    // Shimmer,
-    // Spinner,
-    // Modal,
-    // Footer,
     Content: Content,
     Header: Header,
     CloseButton: CloseButton,
+    Button: Button,
     Item: Item,
   },
   data() {
     return {
       id: "",
-      // modal: {
-      //   show: false,
-      // },
       count: 0,
       spinner: true,
       storeData: [],
+      userId: "",
     };
   },
+  methods: {
+    setBarcode(barcode) {
+      let result = sjcl_default().decrypt(SEKRET_KEY, barcode.result);
+      console.log(result);
+      var qrObj = JSON.parse(result);
+      console.log(qrObj);
+      axios_default()(`${SERVER}user?id=${qrObj.id}`)
+        .then((response) => {
+          response.data;
+          return {
+            cost: this.storeData.find((el) => el.label == qrObj.name).cost,
+            points: response.data.points,
+          };
+        })
+        .then(({ obj }) => {
+          if (obj.points - obj.cost >= 0) {
+            axios_default()(
+              `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
+                obj.points - obj.cost
+              }&target=points`
+            );
+          }
+        });
+    },
+  },
   mounted() {
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response.data);
-    //   return response.data;
-    // });
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response);
-    //   return setId(response.data.id);
-    // });
     let save_id;
-    document.getElementById("id").innerHTML = "123";
     getId()
       .catch(() => {
-        console.log("OBASRALCYA");
-        return axios_default()("http://nl.arturka.net:8000/user/").then((response) => {
-          console.log("response1" + response);
+        return axios_default()(`${SERVER}user/`).then((response) => {
           return response.data.id;
         });
       })
       .then((data) => {
-        console.log("post getid" + data);
         if (data.length) {
+          this.id = data;
           return data;
         } else {
-          return axios_default()("http://nl.arturka.net:8000/user/").then(
-            async (response) => {
-              console.log("response2" + response);
-              //save_id = response.data.id;
-              let ret;
-              try {
-                ret = await setId(response.data.id);
-              } catch (e) {
-                return response.data.id;
-              }
-
-              return ret;
+          return axios_default()(`${SERVER}user/`).then(async (response) => {
+            let ret;
+            try {
+              ret = await setId(response.data.id);
+            } catch (e) {
+              return response.data.id;
             }
-          );
+
+            return ret;
+          });
         }
       })
       .catch(() => {
-        console.log("lovim govno");
         return save_id;
       })
       .then((data) => {
-        console.log("КОНЕЦ" + data);
-        this.id = data;
-        document.getElementById("id").innerHTML = this.id;
+        if (this.id.length == 0) {
+          this.id = data;
+        }
       })
       .then(() => {
-        browser.toCanvas(
-          document.querySelector(".qr-content"),
-          this.id,
-          (err) => {
-            console.log("gg" + err);
-          }
+        axios_default()(
+          `${SERVER}user/update?id=${this.id}&method=set&value=1000&target=points`
         );
       })
+      .then(() => {
+        sessionStorage.setItem("userId", this.id);
+        console.log(sessionStorage.getItem("userId"));
+      })
       .catch((err) => {
-        console.log("da" + err);
-        document.getElementById("id").innerHTML = JSON.stringify(err);
+        console.log("error " + err);
       });
 
-    axios_default()("http://nl.arturka.net:8000/market/").then((response) => {
+    axios_default()(`${SERVER}market/`).then((response) => {
       this.storeData = response.data;
     });
+
+    let balance = document.querySelector(".balance");
+
+    setInterval(() => {
+      axios_default()(`${SERVER}user?id=${this.id}`)
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          balance.innerHTML = `Ваш баланс равен: ${data.points}`;
+        });
+    }, 1000);
   },
 });
 
@@ -744,14 +764,6 @@ var App_component = (0,componentNormalizer/* default */.Z)(
 ;// CONCATENATED MODULE: ./src/main.js
 
 
- // Vue.config.productionTip = false;
-// moby.firebase.subscribe();
-// moby.firebase
-//   .get_token()
-//   .then((token) => {
-//     console.log({ token });
-//   })
-//   .catch((e) => console.log(e));
 
 let old_console = console.log;
 
@@ -765,6 +777,7 @@ console.log = function (...args) {
   old_console(...args);
 };
 
+vue_runtime_esm/* default.prototype.$storeData */.Z.prototype.$storeData;
 new vue_runtime_esm/* default */.Z({
   render: h => h(App)
 }).$mount("#app");
@@ -932,7 +945,7 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(2026)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(9608)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

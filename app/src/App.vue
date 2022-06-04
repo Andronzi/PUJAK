@@ -4,6 +4,15 @@
       <CloseButton />
     </Header>
     <Content :header="true" :footer="false" :scroll="true" :scrollbar="true">
+      <div>
+        <p class="balance">Ваш баланс равен:</p>
+      </div>
+      <canvas class="canvas"></canvas>
+      <div class="mt-6">
+        <Button class="w-28 bg-sky-500/100" @setBarcode="setBarcode">
+          <template slot="text">Сканировать QR</template>
+        </Button>
+      </div>
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
       </div>
@@ -17,18 +26,7 @@
         </div>
       </div>
       <div id="console"></div>
-      <!-- {{ createQR() }} -->
-      <!--<Shimmer />-->
-      <!--<SurveyCard-->
-      <!--url="http://"-->
-      <!--imgUrl=""-->
-      <!--name="SurveyCard"-->
-      <!--description="SurveyCard"-->
-      <!--/>-->
     </Content>
-    <!--<Footer>content footer</Footer>-->
-    <!--<Modal :isVisible="modal.show" @onClose="modal.show = false" />-->
-    <!--<Spinner v-if="spinner" />-->
   </div>
 </template>
 
@@ -36,97 +34,118 @@
 import Header from "./components/Header.vue";
 import CloseButton from "./components/CloseButton.vue";
 import Content from "./components/Content.vue";
-import qrcode from "qrcode";
-import { getId, setId } from "./utils";
 import Item from "./components/Item.vue";
+import Button from "./components/Button.vue";
 import axios from "axios";
-// import SurveyCard from "./components/SurveyCard";
-// import Shimmer from "./components/Shimmer";
-// import Spinner from "./components/Spinner";
-// import Modal from "./components/Modal";
-// import Footer from "./components/Footer";
+import sjcl from "sjcl";
+import { getId, setId } from "./utils";
+import { SERVER } from "./config.js";
+import { SEKRET_KEY } from "./config.js";
+
 export default {
   name: "App",
   components: {
-    // SurveyCard,
-    // Shimmer,
-    // Spinner,
-    // Modal,
-    // Footer,
     Content,
     Header,
     CloseButton,
+    Button,
     Item,
   },
   data() {
     return {
       id: "",
-      // modal: {
-      //   show: false,
-      // },
       count: 0,
       spinner: true,
       storeData: [],
+      userId: "",
     };
   },
+  methods: {
+    setBarcode(barcode) {
+      let result = sjcl.decrypt(SEKRET_KEY, barcode.result);
+      console.log(result);
+      var qrObj = JSON.parse(result);
+      console.log(qrObj);
+      axios(`${SERVER}user?id=${qrObj.id}`)
+        .then((response) => {
+          response.data;
+          return {
+            cost: this.storeData.find((el) => el.label == qrObj.name).cost,
+            points: response.data.points,
+          };
+        })
+        .then(({ obj }) => {
+          if (obj.points - obj.cost >= 0) {
+            axios(
+              `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
+                obj.points - obj.cost
+              }&target=points`
+            );
+          }
+        });
+    },
+  },
   mounted() {
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response.data);
-    //   return response.data;
-    // });
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response);
-    //   return setId(response.data.id);
-    // });
     let save_id;
-    document.getElementById("id").innerHTML = "123";
     getId()
       .catch(() => {
-        return axios("http://nl.arturka.net:8000/user/").then((response) => {
+        return axios(`${SERVER}user/`).then((response) => {
           return response.data.id;
         });
       })
       .then((data) => {
         if (data.length) {
+          this.id = data;
           return data;
         } else {
-          return axios("http://nl.arturka.net:8000/user/").then(
-            async (response) => {
-              let ret;
-              try {
-                ret = await setId(response.data.id);
-              } catch (e) {
-                return response.data.id;
-              }
-
-              return ret;
+          return axios(`${SERVER}user/`).then(async (response) => {
+            let ret;
+            try {
+              ret = await setId(response.data.id);
+            } catch (e) {
+              return response.data.id;
             }
-          );
+
+            return ret;
+          });
         }
       })
       .catch(() => {
         return save_id;
       })
       .then((data) => {
-        this.id = data;
-        document.getElementById("id").innerHTML = this.id;
+        if (this.id.length == 0) {
+          this.id = data;
+        }
       })
       .then(() => {
-        qrcode.toCanvas(
-          document.querySelector(".qr-content"),
-          this.id,
-          (err) => {
-            console.log(err);
-          }
+        axios(
+          `${SERVER}user/update?id=${this.id}&method=set&value=1000&target=points`
         );
       })
+      .then(() => {
+        sessionStorage.setItem("userId", this.id);
+        console.log(sessionStorage.getItem("userId"));
+      })
       .catch((err) => {
-        document.getElementById("id").innerHTML = JSON.stringify(err);
+        console.log("error " + err);
       });
 
-    axios("http://nl.arturka.net:8000/market/").then((response) => {
+    axios(`${SERVER}market/`).then((response) => {
       this.storeData = response.data;
     });
+
+    let balance = document.querySelector(".balance");
+
+    setInterval(() => {
+      axios(`${SERVER}user?id=${this.id}`)
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          balance.innerHTML = `Ваш баланс равен: ${data.points}`;
+        });
+    }, 1000);
   },
 };
 </script>

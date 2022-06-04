@@ -9,25 +9,21 @@
       {{ itemName }}
     </p>
     <div class="mt-6">
-      <Button class="w-28" @setBarcode="setBarcode">
-        <template slot="text">Купить за {{ cost }}</template>
-        <!--<template slot="icon">icon html</template>-->
-      </Button>
+      <button class="w-28" v-on:click="onClick(cost)">
+        Купить за {{ itemName }}
+      </button>
     </div>
-    <!-- <div v-if="barcode" class="mx-2 mt-6 text-center">
-      <b>Result:</b>
-      <br />
-    </div> -->
   </div>
 </template>
 
 <script lang="ts">
-import Button from "./Button.vue";
+import qrcode from "qrcode";
+import sjcl from "sjcl";
+import { SEKRET_KEY } from "../config";
+
 export default {
   name: "Item",
-  components: {
-    Button,
-  },
+
   props: {
     url: {
       type: String,
@@ -37,16 +33,26 @@ export default {
       default: "",
     },
     cost: {
-      type: String,
+      type: Number,
     },
   },
 
   methods: {
-    setBarcode(barcode) {
-      console.log(barcode);
+    onClick(name) {
+      qrcode.toCanvas(
+        document.querySelector(".canvas"),
+        sjcl.encrypt(
+          SEKRET_KEY,
+          JSON.stringify({
+            id: sessionStorage.getItem("userId"),
+            name,
+          }),
+          (err) => {
+            console.log("err" + err);
+          }
+        )
+      );
     },
-
-    setItemId() {},
   },
 };
 </script>
