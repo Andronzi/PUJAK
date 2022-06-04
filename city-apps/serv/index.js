@@ -1,4 +1,5 @@
-import express from "express";
+import express from "express"
+import cors from "cors"
 import sqlite3 from "sqlite3"
 
 import userRouter from "./routes/user.js"
@@ -11,6 +12,7 @@ db.run("CREATE TABLE IF NOT EXISTS users (id TEXT UNIQUE, points)")
 
 const app = express()   
 app.use(express.json({limit: '50mb'}))
+    .use(cors())
     .use("/user", userRouter)
     .set("db", db)
 

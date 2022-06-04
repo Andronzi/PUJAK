@@ -7,7 +7,7 @@ function createUserSelector(strict = false) {
     return function (req, res, next) {
         if (req.query["id"]) {
             const db = req.app.get("db");
-            const sql = `SELECT * FROM users WHERE id = ${req.query["id"]}`
+            const sql = `SELECT * FROM users WHERE id = '${req.query["id"]}'`
     
             db.get(sql, (err, match) => {
                 if (err) {
