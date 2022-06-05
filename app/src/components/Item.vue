@@ -9,8 +9,8 @@
       {{ itemName }}
     </p>
     <div class="mt-6">
-      <button class="w-28" v-on:click="onClick(cost)">
-        Купить за {{ itemName }}
+      <button class="w-28" v-on:click="onClick(itemName)">
+        Купить за {{ cost }}
       </button>
     </div>
   </div>
@@ -45,7 +45,7 @@ export default {
           SEKRET_KEY,
           JSON.stringify({
             id: sessionStorage.getItem("userId"),
-            name,
+            name: name,
           }),
           (err) => {
             console.log("err" + err);

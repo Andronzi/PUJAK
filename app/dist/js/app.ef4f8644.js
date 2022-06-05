@@ -2,13 +2,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 7641:
+/***/ 882:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
 // EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
 var vue_runtime_esm = __webpack_require__(8935);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=d56d75ee&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=26a89ca6&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('div',[_c('p',{staticClass:"balance"},[_vm._v("Ваш баланс равен:")])]),_c('canvas',{staticClass:"canvas"}),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28 bg-sky-500/100",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Сканировать QR")])],2)],1),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
 var staticRenderFns = []
 
@@ -245,9 +245,9 @@ var Content_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const Content = (Content_component.exports);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=0f5c3ee4&
-var Itemvue_type_template_id_0f5c3ee4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_vm._v(" Купить за "+_vm._s(_vm.itemName)+" ")])])])}
-var Itemvue_type_template_id_0f5c3ee4_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=528661d1&
+var Itemvue_type_template_id_528661d1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.itemName)}}},[_vm._v(" Купить за "+_vm._s(_vm.cost)+" ")])])])}
+var Itemvue_type_template_id_528661d1_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/qrcode/lib/browser.js
@@ -307,7 +307,7 @@ const SEKRET_KEY = "yde5rfutihj8femqi";
           SEKRET_KEY,
           JSON.stringify({
             id: sessionStorage.getItem("userId"),
-            name,
+            name: name,
           }),
           (err) => {
             console.log("err" + err);
@@ -330,8 +330,8 @@ const SEKRET_KEY = "yde5rfutihj8femqi";
 ;
 var Item_component = (0,componentNormalizer/* default */.Z)(
   components_Itemvue_type_script_lang_ts_,
-  Itemvue_type_template_id_0f5c3ee4_render,
-  Itemvue_type_template_id_0f5c3ee4_staticRenderFns,
+  Itemvue_type_template_id_528661d1_render,
+  Itemvue_type_template_id_528661d1_staticRenderFns,
   false,
   null,
   null,
@@ -654,6 +654,7 @@ async function setId(id) {
     setBarcode(barcode) {
       let result = sjcl_default().decrypt(SEKRET_KEY, barcode.result);
       var qrObj = JSON.parse(result);
+      console.log("obj=", qrObj);
       axios_default()(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
           let cost;
@@ -675,6 +676,9 @@ async function setId(id) {
               }&target=points`
             );
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
@@ -948,7 +952,7 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(7641)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(882)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

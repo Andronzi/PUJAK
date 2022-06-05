@@ -64,6 +64,7 @@ export default {
     setBarcode(barcode) {
       let result = sjcl.decrypt(SEKRET_KEY, barcode.result);
       var qrObj = JSON.parse(result);
+      console.log("obj=", qrObj);
       axios(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
           let cost;
@@ -85,6 +86,9 @@ export default {
               }&target=points`
             );
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
