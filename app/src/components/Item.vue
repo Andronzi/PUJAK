@@ -1,9 +1,13 @@
 <template>
   <div class="item-block">
-    <img class="item-block__image min-w-2xl" :src="url" />
+    <img
+      class="item-block__image min-w-2xl"
+      style="min-width: 225px"
+      :src="url"
+    />
     <p
       class="item-block__name mt-6 text-center"
-      style="max-width: 150px; min-height: 2em"
+      style="max-width: 225px; min-height: 2em"
     >
       {{ itemName }}
     </p>
