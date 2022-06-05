@@ -2,13 +2,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 9608:
+/***/ 7641:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
 // EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
 var vue_runtime_esm = __webpack_require__(8935);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=355f8d34&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=d56d75ee&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('div',[_c('p',{staticClass:"balance"},[_vm._v("Ваш баланс равен:")])]),_c('canvas',{staticClass:"canvas"}),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28 bg-sky-500/100",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Сканировать QR")])],2)],1),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
 var staticRenderFns = []
 
@@ -653,18 +653,21 @@ async function setId(id) {
   methods: {
     setBarcode(barcode) {
       let result = sjcl_default().decrypt(SEKRET_KEY, barcode.result);
-      console.log(result);
       var qrObj = JSON.parse(result);
-      console.log(qrObj);
       axios_default()(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
-          response.data;
+          let cost;
+          this.storeData.forEach((el) => {
+            if (el.label == qrObj.name) {
+              cost = el.cost;
+            }
+          });
           return {
-            cost: this.storeData.find((el) => el.label == qrObj.name).cost,
+            cost: cost,
             points: response.data.points,
           };
         })
-        .then(({ obj }) => {
+        .then((obj) => {
           if (obj.points - obj.cost >= 0) {
             axios_default()(
               `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
@@ -945,7 +948,7 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(9608)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(7641)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

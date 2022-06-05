@@ -63,18 +63,21 @@ export default {
   methods: {
     setBarcode(barcode) {
       let result = sjcl.decrypt(SEKRET_KEY, barcode.result);
-      console.log(result);
       var qrObj = JSON.parse(result);
-      console.log(qrObj);
       axios(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
-          response.data;
+          let cost;
+          this.storeData.forEach((el) => {
+            if (el.label == qrObj.name) {
+              cost = el.cost;
+            }
+          });
           return {
-            cost: this.storeData.find((el) => el.label == qrObj.name).cost,
+            cost: cost,
             points: response.data.points,
           };
         })
-        .then(({ obj }) => {
+        .then((obj) => {
           if (obj.points - obj.cost >= 0) {
             axios(
               `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
