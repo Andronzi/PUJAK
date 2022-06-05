@@ -2,20 +2,20 @@ import "./assets/styles/global.css";
 import Vue from "vue";
 import App from "./App.vue";
 
-let old_console = console.log;
+// let old_console = console.log;
 
-console.log = function (...args) {
-  let da = document.getElementById("console");
-  let span = document.createElement("span");
-  span.style.display = "block";
+// console.log = function (...args) {
+//   let da = document.getElementById("console");
+//   let span = document.createElement("span");
+//   span.style.display = "block";
 
-  let net = /.+?\n.+?\n.+?(:\d+)/.exec(new Error("da").stack.toString())[1];
-  span.innerHTML = (JSON.stringify(args).toString() + net).toString();
+//   let net = /.+?\n.+?\n.+?(:\d+)/.exec(new Error("da").stack.toString())[1];
+//   span.innerHTML = (JSON.stringify(args).toString() + net).toString();
 
-  da.appendChild(span);
+//   da.appendChild(span);
 
-  old_console(...args);
-};
+//   old_console(...args);
+// };
 
 Vue.prototype.$storeData;
 
