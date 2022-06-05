@@ -4925,7 +4925,7 @@ module.exports = InterceptorManager;
 
 var isAbsoluteURL = __webpack_require__(8612);
 
-var combineURLs = __webpack_require__(6199);
+var combineURLs = __webpack_require__(1549);
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
  * only when the requestedURL is not already an absolute URL.
@@ -5444,7 +5444,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 /***/ }),
 
-/***/ 6199:
+/***/ 1549:
 /***/ ((module) => {
 
 "use strict";

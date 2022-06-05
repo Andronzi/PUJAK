@@ -7,6 +7,7 @@
       <div>
         <p class="balance">Ваш баланс равен:</p>
       </div>
+      <canvas class="canvas"></canvas>
       <div class="mt-6">
         <Button class="w-28 bg-sky-500/100" @setBarcode="setBarcode">
           <template slot="text">Сканировать QR</template>
@@ -25,18 +26,7 @@
         </div>
       </div>
       <div id="console"></div>
-      <!-- {{ createQR() }} -->
-      <!--<Shimmer />-->
-      <!--<SurveyCard-->
-      <!--url="http://"-->
-      <!--imgUrl=""-->
-      <!--name="SurveyCard"-->
-      <!--description="SurveyCard"-->
-      <!--/>-->
     </Content>
-    <!--<Footer>content footer</Footer>-->
-    <!--<Modal :isVisible="modal.show" @onClose="modal.show = false" />-->
-    <!--<Spinner v-if="spinner" />-->
   </div>
 </template>
 
@@ -44,23 +34,15 @@
 import Header from "./components/Header.vue";
 import CloseButton from "./components/CloseButton.vue";
 import Content from "./components/Content.vue";
-import { getId, setId } from "./utils";
 import Item from "./components/Item.vue";
 import Button from "./components/Button.vue";
 import axios from "axios";
-// import SurveyCard from "./components/SurveyCard";
-// import Shimmer from "./components/Shimmer";
-// import Spinner from "./components/Spinner";
-// import Modal from "./components/Modal";
-// import Footer from "./components/Footer";
+import { getId, setId } from "./utils";
+import { SERVER } from "./config.js";
+
 export default {
   name: "App",
   components: {
-    // SurveyCard,
-    // Shimmer,
-    // Spinner,
-    // Modal,
-    // Footer,
     Content,
     Header,
     CloseButton,
@@ -70,9 +52,6 @@ export default {
   data() {
     return {
       id: "",
-      // modal: {
-      //   show: false,
-      // },
       count: 0,
       spinner: true,
       storeData: [],
@@ -82,7 +61,7 @@ export default {
   methods: {
     setBarcode(barcode) {
       var qrObj = JSON.parse(barcode.result);
-      axios(`http://nl.arturka.net:8000/user?id=${qrObj.id}`)
+      axios(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
           return response.data;
         })
@@ -91,27 +70,19 @@ export default {
           console.log(data.points, qrObj.cost);
           if (data.points - qrObj.cost >= 0) {
             axios(
-              `http://nl.arturka.net:8000/user/update?id=${
-                qrObj.id
-              }&method=set&value=${data.points - qrObj.cost}&target=points`
+              `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
+                data.points - qrObj.cost
+              }&target=points`
             );
           }
         });
     },
   },
   mounted() {
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response.data);
-    //   return response.data;
-    // });
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response);
-    //   return setId(response.data.id);
-    // });
     let save_id;
     getId()
       .catch(() => {
-        return axios("http://nl.arturka.net:8000/user/").then((response) => {
+        return axios(`${SERVER}user/`).then((response) => {
           return response.data.id;
         });
       })
@@ -120,18 +91,16 @@ export default {
           this.id = data;
           return data;
         } else {
-          return axios("http://nl.arturka.net:8000/user/").then(
-            async (response) => {
-              let ret;
-              try {
-                ret = await setId(response.data.id);
-              } catch (e) {
-                return response.data.id;
-              }
-
-              return ret;
+          return axios(`${SERVER}user/`).then(async (response) => {
+            let ret;
+            try {
+              ret = await setId(response.data.id);
+            } catch (e) {
+              return response.data.id;
             }
-          );
+
+            return ret;
+          });
         }
       })
       .catch(() => {
@@ -144,7 +113,7 @@ export default {
       })
       .then(() => {
         axios(
-          `http://nl.arturka.net:8000/user/update?id=${this.id}&method=set&value=1000&target=points`
+          `${SERVER}user/update?id=${this.id}&method=set&value=1000&target=points`
         );
       })
       .then(() => {
@@ -155,14 +124,14 @@ export default {
         console.log("err2" + err);
       });
 
-    axios("http://nl.arturka.net:8000/market/").then((response) => {
+    axios(`${SERVER}market/`).then((response) => {
       this.storeData = response.data;
     });
 
     let balance = document.querySelector(".balance");
 
     setInterval(() => {
-      axios(`http://nl.arturka.net:8000/user?id=${this.id}`)
+      axios(`${SERVER}user?id=${this.id}`)
         .then((response) => {
           return response.data;
         })

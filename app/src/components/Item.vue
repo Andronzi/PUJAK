@@ -12,14 +12,12 @@
       <button class="w-28" v-on:click="onClick(cost)">
         Купить за {{ cost }}
       </button>
-      <canvas class="canvas"></canvas>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import qrcode from "qrcode";
-// import axios from "axios";
 export default {
   name: "Item",
 
@@ -45,9 +43,6 @@ export default {
   methods: {
     onClick(cost) {
       console.log(cost);
-      // console.log(
-      //   JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") })
-      // );
       qrcode.toCanvas(
         document.querySelector(".canvas"),
         JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") }),

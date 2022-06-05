@@ -49,12 +49,10 @@ export default {
       if (this.header) {
         if (this.footer)
           return "h-[calc(100vh-var(--header-sait)-var(--footer-saib))]";
-        // both
-        else return "h-[calc(100vh-var(--header-sait))]"; // just header
+        else return "h-[calc(100vh-var(--header-sait))]";
       } else {
         if (this.footer) return "h-[calc(100vh-var(--footer-saib))]";
-        // just footer
-        else return "h-screen"; // default
+        else return "h-screen";
       }
     },
   },

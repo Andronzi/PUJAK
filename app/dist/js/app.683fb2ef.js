@@ -2,14 +2,14 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 1549:
+/***/ 2441:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
 // EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
 var vue_runtime_esm = __webpack_require__(8935);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=504c3aa4&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('div',[_c('p',{staticClass:"balance"},[_vm._v("Ваш баланс равен:")])]),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28 bg-sky-500/100",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Сканировать QR")])],2)],1),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=02c17348&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('div',[_c('p',{staticClass:"balance"},[_vm._v("Ваш баланс равен:")])]),_c('canvas',{staticClass:"canvas"}),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28 bg-sky-500/100",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Сканировать QR")])],2)],1),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
 var staticRenderFns = []
 
 
@@ -135,13 +135,13 @@ var CloseButton_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const CloseButton = (CloseButton_component.exports);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Content.vue?vue&type=template&id=8cdfe5a0&
-var Contentvue_type_template_id_8cdfe5a0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-screen",class:[
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Content.vue?vue&type=template&id=10e3dfb6&
+var Contentvue_type_template_id_10e3dfb6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-screen",class:[
     _vm.header ? 'mt-[var(--header-sait)]' : '',
     _vm.calc_height,
     _vm.scroll ? 'overflow-y-auto' : 'overflow-hidden',
     _vm.scrollbar ? 'scrollbar' : '' ],attrs:{"hidden":_vm.hidden},on:{"scroll":_vm.onscroll}},[_vm._t("default")],2)}
-var Contentvue_type_template_id_8cdfe5a0_staticRenderFns = []
+var Contentvue_type_template_id_10e3dfb6_staticRenderFns = []
 
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Content.vue?vue&type=script&lang=ts&
@@ -196,12 +196,10 @@ var Contentvue_type_template_id_8cdfe5a0_staticRenderFns = []
       if (this.header) {
         if (this.footer)
           return "h-[calc(100vh-var(--header-sait)-var(--footer-saib))]";
-        // both
-        else return "h-[calc(100vh-var(--header-sait))]"; // just header
+        else return "h-[calc(100vh-var(--header-sait))]";
       } else {
         if (this.footer) return "h-[calc(100vh-var(--footer-saib))]";
-        // just footer
-        else return "h-screen"; // default
+        else return "h-screen";
       }
     },
   },
@@ -237,8 +235,8 @@ var Contentvue_type_template_id_8cdfe5a0_staticRenderFns = []
 ;
 var Content_component = (0,componentNormalizer/* default */.Z)(
   components_Contentvue_type_script_lang_ts_,
-  Contentvue_type_template_id_8cdfe5a0_render,
-  Contentvue_type_template_id_8cdfe5a0_staticRenderFns,
+  Contentvue_type_template_id_10e3dfb6_render,
+  Contentvue_type_template_id_10e3dfb6_staticRenderFns,
   false,
   null,
   null,
@@ -269,9 +267,9 @@ async function setId(id) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=4895d895&
-var Itemvue_type_template_id_4895d895_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_vm._v(" Купить за "+_vm._s(_vm.cost)+" ")]),_c('canvas',{staticClass:"canvas"})])])}
-var Itemvue_type_template_id_4895d895_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=78ec958a&
+var Itemvue_type_template_id_78ec958a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_vm._v(" Купить за "+_vm._s(_vm.cost)+" ")])])])}
+var Itemvue_type_template_id_78ec958a_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/qrcode/lib/browser.js
@@ -297,8 +295,6 @@ var browser = __webpack_require__(8733);
 
 
 
-
-// import axios from "axios";
 /* harmony default export */ const Itemvue_type_script_lang_ts_ = ({
   name: "Item",
 
@@ -324,9 +320,6 @@ var browser = __webpack_require__(8733);
   methods: {
     onClick(cost) {
       console.log(cost);
-      // console.log(
-      //   JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") })
-      // );
       browser.toCanvas(
         document.querySelector(".canvas"),
         JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") }),
@@ -356,8 +349,8 @@ var browser = __webpack_require__(8733);
 ;
 var Item_component = (0,componentNormalizer/* default */.Z)(
   components_Itemvue_type_script_lang_ts_,
-  Itemvue_type_template_id_4895d895_render,
-  Itemvue_type_template_id_4895d895_staticRenderFns,
+  Itemvue_type_template_id_78ec958a_render,
+  Itemvue_type_template_id_78ec958a_staticRenderFns,
   false,
   null,
   null,
@@ -632,29 +625,9 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 
 
-
-
-
-
-
-
-
-
-
-
-// import SurveyCard from "./components/SurveyCard";
-// import Shimmer from "./components/Shimmer";
-// import Spinner from "./components/Spinner";
-// import Modal from "./components/Modal";
-// import Footer from "./components/Footer";
 /* harmony default export */ const Appvue_type_script_lang_ts_ = ({
   name: "App",
   components: {
-    // SurveyCard,
-    // Shimmer,
-    // Spinner,
-    // Modal,
-    // Footer,
     Content: Content,
     Header: Header,
     CloseButton: CloseButton,
@@ -664,9 +637,6 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
   data() {
     return {
       id: "",
-      // modal: {
-      //   show: false,
-      // },
       count: 0,
       spinner: true,
       storeData: [],
@@ -694,14 +664,6 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
     },
   },
   mounted() {
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response.data);
-    //   return response.data;
-    // });
-    // axios("http://nl.arturka.net:8000/user/").then((response) => {
-    //   console.log(response);
-    //   return setId(response.data.id);
-    // });
     let save_id;
     getId()
       .catch(() => {
@@ -792,14 +754,6 @@ var App_component = (0,componentNormalizer/* default */.Z)(
 ;// CONCATENATED MODULE: ./src/main.js
 
 
- // Vue.config.productionTip = false;
-// moby.firebase.subscribe();
-// moby.firebase
-//   .get_token()
-//   .then((token) => {
-//     console.log({ token });
-//   })
-//   .catch((e) => console.log(e));
 
 let old_console = console.log;
 
@@ -980,7 +934,7 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(1549)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(2441)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
