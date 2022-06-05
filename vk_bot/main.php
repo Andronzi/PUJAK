@@ -96,7 +96,7 @@ class CallbackApiCustomHandler extends VKCallbackApiHandler{
 
                 $this->gameState[$obj['message']['peer_id']]['curr_word'] = $word;
                 $this->gameState[$obj['message']['peer_id']]['finish'] = false;
-                console_log(json_encode($this->gameState[$obj['message']['peer_id']]));
+//                console_log(json_encode($this->gameState[$obj['message']['peer_id']]));
                 return $word;
 
             case 'баланс':
