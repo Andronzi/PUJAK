@@ -78,22 +78,24 @@ class CallbackApiCustomHandler extends VKCallbackApiHandler{
 
                 $this->sendMessage($obj['message']['peer_id'], '', $ret);
 //
-                console_log(json_encode($remaindWords));
-                console_log(json_encode($wordsArr));
+//                console_log(json_encode($remaindWords));
+//                console_log(json_encode($wordsArr));
                 $wordKey = array_rand($remaindWords, 1);
                 $word = $remaindWords[$wordKey] ?? array_pop($wordsArr[0]) . '.';
                 preg_match('/.+_(.+)/', $wordKey, $matchKey);
 
 
-                if(isset($this->gameState[$obj['message']['peer_id']])){
+                if(!isset($this->gameState[$obj['message']['peer_id']])){
                     $this->gameState[$obj['message']['peer_id']] = [
                         'curr_word' => $word,
                         'curr_answer' => $matchKey[1],
                         'balance' => 0,
+                        'finish' => false,
                     ];
                 }
 
                 $this->gameState[$obj['message']['peer_id']]['curr_word'] = $word;
+                $this->gameState[$obj['message']['peer_id']]['finish'] = false;
                 console_log(json_encode($this->gameState[$obj['message']['peer_id']]));
                 return $word;
 
@@ -101,11 +103,17 @@ class CallbackApiCustomHandler extends VKCallbackApiHandler{
                 return 'Твой баланс: ' . ($this->gameState[$obj['message']['peer_id']]['balance'] ?? 0) . 'м';
 
             default:
-                if(($this->gameState[$obj['message']['peer_id']]['curr_answer'] ?? '') == $ls[0]){
+                if($this->gameState[$obj['message']['peer_id']]['finish'] ?? true)
+                    return 'Отправь слово "Старт"';
+
+                if((($this->gameState[$obj['message']['peer_id']]['curr_answer'] + 1) ?? '') == $ls[0]){
                     $this->gameState[$obj['message']['peer_id']]['balance'] += 3;
+                    $this->gameState[$obj['message']['peer_id']]['finish'] = true;
                     return 'Правильно, на твой баланс добавлено 3 монетки';
-                }else
+                }else {
+                    $this->gameState[$obj['message']['peer_id']]['finish'] = true;
                     return 'Неправильно, не дам монетки';
+                }
         }
     }
 
