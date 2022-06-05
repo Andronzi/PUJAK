@@ -745,6 +745,9 @@ select {
 .h-28 {
   height: 7rem;
 }
+.w-28 {
+  width: 7rem;
+}
 .w-7 {
   width: 1.75rem;
 }
@@ -756,9 +759,6 @@ select {
 }
 .w-6 {
   width: 1.5rem;
-}
-.w-28 {
-  width: 7rem;
 }
 .w-10 {
   width: 2.5rem;
@@ -873,6 +873,9 @@ select {
 .border-b {
   border-bottom-width: 1px;
 }
+.bg-sky-500\/100 {
+  background-color: rgb(14 165 233 / 1);
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -880,9 +883,6 @@ select {
 .bg-orange-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 115 22 / var(--tw-bg-opacity));
-}
-.bg-sky-500\/100 {
-  background-color: rgb(14 165 233 / 1);
 }
 .bg-gray-50 {
   --tw-bg-opacity: 1;

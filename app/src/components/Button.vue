@@ -53,10 +53,9 @@ export default {
     };
   },
   methods: {
-    async onClick(cost) {
-      console.log(cost);
+    async onClick() {
       const barcode = await moby.barcode.scan([moby.barcode.symbology.qr]);
-      this.$emit("setBarcode", barcode, cost);
+      this.$emit("setBarcode", barcode);
     },
   },
 };

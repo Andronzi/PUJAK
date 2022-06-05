@@ -9,20 +9,19 @@
       {{ itemName }}
     </p>
     <div class="mt-6">
-      <Button class="w-28" @setBarcode="setBarcode" :cost="cost">
-        <template slot="text">Купить за {{ cost }}</template>
-      </Button>
+      <button class="w-28" v-on:click="onClick(cost)">
+        Купить за {{ cost }}
+      </button>
+      <canvas class="canvas"></canvas>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Button from "./Button.vue";
+import qrcode from "qrcode";
+// import axios from "axios";
 export default {
   name: "Item",
-  components: {
-    Button,
-  },
 
   props: {
     url: {
@@ -44,9 +43,24 @@ export default {
   },
 
   methods: {
-    setBarcode(barcode, cost) {
-      this.id = barcode;
+    onClick(cost) {
       console.log(cost);
+      // console.log(
+      //   JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") })
+      // );
+      qrcode.toCanvas(
+        document.querySelector(".canvas"),
+        JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") }),
+        (err) => {
+          console.log("err" + err);
+        }
+      );
+    },
+  },
+
+  watch: {
+    cost: function () {
+      this.init();
     },
   },
 };

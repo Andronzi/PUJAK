@@ -4,8 +4,13 @@
       <CloseButton />
     </Header>
     <Content :header="true" :footer="false" :scroll="true" :scrollbar="true">
-      <div class="balance">
-        <p>Ваш баланс равен:</p>
+      <div>
+        <p class="balance">Ваш баланс равен:</p>
+      </div>
+      <div class="mt-6">
+        <Button class="w-28 bg-sky-500/100" @setBarcode="setBarcode">
+          <template slot="text">Сканировать QR</template>
+        </Button>
       </div>
       <div class="mx-2 mt-6 text-center">
         <canvas class="qr-content"></canvas>
@@ -39,9 +44,9 @@
 import Header from "./components/Header.vue";
 import CloseButton from "./components/CloseButton.vue";
 import Content from "./components/Content.vue";
-import qrcode from "qrcode";
 import { getId, setId } from "./utils";
 import Item from "./components/Item.vue";
+import Button from "./components/Button.vue";
 import axios from "axios";
 // import SurveyCard from "./components/SurveyCard";
 // import Shimmer from "./components/Shimmer";
@@ -59,6 +64,7 @@ export default {
     Content,
     Header,
     CloseButton,
+    Button,
     Item,
   },
   data() {
@@ -70,7 +76,28 @@ export default {
       count: 0,
       spinner: true,
       storeData: [],
+      userId: "",
     };
+  },
+  methods: {
+    setBarcode(barcode) {
+      var qrObj = JSON.parse(barcode.result);
+      axios(`http://nl.arturka.net:8000/user?id=${qrObj.id}`)
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          console.log(qrObj);
+          console.log(data.points, qrObj.cost);
+          if (data.points - qrObj.cost >= 0) {
+            axios(
+              `http://nl.arturka.net:8000/user/update?id=${
+                qrObj.id
+              }&method=set&value=${data.points - qrObj.cost}&target=points`
+            );
+          }
+        });
+    },
   },
   mounted() {
     // axios("http://nl.arturka.net:8000/user/").then((response) => {
@@ -90,6 +117,7 @@ export default {
       })
       .then((data) => {
         if (data.length) {
+          this.id = data;
           return data;
         } else {
           return axios("http://nl.arturka.net:8000/user/").then(
@@ -110,16 +138,18 @@ export default {
         return save_id;
       })
       .then((data) => {
-        this.id = data;
+        if (this.id.length == 0) {
+          this.id = data;
+        }
       })
       .then(() => {
-        qrcode.toCanvas(
-          document.querySelector(".qr-content"),
-          this.id,
-          (err) => {
-            console.log("err1" + err);
-          }
+        axios(
+          `http://nl.arturka.net:8000/user/update?id=${this.id}&method=set&value=1000&target=points`
         );
+      })
+      .then(() => {
+        sessionStorage.setItem("userId", this.id);
+        console.log(sessionStorage.getItem("userId"));
       })
       .catch((err) => {
         console.log("err2" + err);
@@ -129,15 +159,16 @@ export default {
       this.storeData = response.data;
     });
 
-    axios(
-      `http://nl.arturka.net:8000/user/update?id=${this.id}method[set]value=1000integertarget=points`
-    );
-
     let balance = document.querySelector(".balance");
+
     setInterval(() => {
-      axios(`http://nl.arturka.net:8000/user/${this.id}`).then((response) => {
-        balance.innerHTML = response.data.points;
-      });
+      axios(`http://nl.arturka.net:8000/user?id=${this.id}`)
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          balance.innerHTML = `Ваш баланс равен: ${data.points}`;
+        });
     }, 1000);
   },
 };
