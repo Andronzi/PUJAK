@@ -10,7 +10,7 @@
     </p>
     <div class="mt-6">
       <button class="w-28" v-on:click="onClick(cost)">
-        Купить за {{ cost }}
+        Купить за {{ itemName }}
       </button>
     </div>
   </div>
@@ -18,6 +18,9 @@
 
 <script lang="ts">
 import qrcode from "qrcode";
+import sjcl from "sjcl";
+import { SEKRET_KEY } from "../config";
+
 export default {
   name: "Item",
 
@@ -34,28 +37,21 @@ export default {
     },
   },
 
-  data() {
-    return {
-      storeCost: 0,
-    };
-  },
-
   methods: {
-    onClick(cost) {
-      console.log(cost);
+    onClick(name) {
       qrcode.toCanvas(
         document.querySelector(".canvas"),
-        JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") }),
-        (err) => {
-          console.log("err" + err);
-        }
+        sjcl.encrypt(
+          SEKRET_KEY,
+          JSON.stringify({
+            id: sessionStorage.getItem("userId"),
+            name,
+          }),
+          (err) => {
+            console.log("err" + err);
+          }
+        )
       );
-    },
-  },
-
-  watch: {
-    cost: function () {
-      this.init();
     },
   },
 };

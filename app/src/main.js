@@ -17,6 +17,8 @@ console.log = function (...args) {
   old_console(...args);
 };
 
+Vue.prototype.$storeData;
+
 new Vue({
   render: (h) => h(App),
 }).$mount("#app");

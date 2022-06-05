@@ -37,8 +37,10 @@ import Content from "./components/Content.vue";
 import Item from "./components/Item.vue";
 import Button from "./components/Button.vue";
 import axios from "axios";
+import sjcl from "sjcl";
 import { getId, setId } from "./utils";
 import { SERVER } from "./config.js";
+import { SEKRET_KEY } from "./config.js";
 
 export default {
   name: "App",
@@ -60,18 +62,23 @@ export default {
   },
   methods: {
     setBarcode(barcode) {
-      var qrObj = JSON.parse(barcode.result);
+      let result = sjcl.decrypt(SEKRET_KEY, barcode.result);
+      console.log(result);
+      var qrObj = JSON.parse(result);
+      console.log(qrObj);
       axios(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
-          return response.data;
+          response.data;
+          return {
+            cost: this.storeData.find((el) => el.label == qrObj.name).cost,
+            points: response.data.points,
+          };
         })
-        .then((data) => {
-          console.log(qrObj);
-          console.log(data.points, qrObj.cost);
-          if (data.points - qrObj.cost >= 0) {
+        .then(({ obj }) => {
+          if (obj.points - obj.cost >= 0) {
             axios(
               `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
-                data.points - qrObj.cost
+                obj.points - obj.cost
               }&target=points`
             );
           }
@@ -121,7 +128,7 @@ export default {
         console.log(sessionStorage.getItem("userId"));
       })
       .catch((err) => {
-        console.log("err2" + err);
+        console.log("error " + err);
       });
 
     axios(`${SERVER}market/`).then((response) => {

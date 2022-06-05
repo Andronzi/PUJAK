@@ -2,13 +2,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 2441:
+/***/ 9608:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
 // EXTERNAL MODULE: ./node_modules/vue/dist/vue.runtime.esm.js
 var vue_runtime_esm = __webpack_require__(8935);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=02c17348&
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=355f8d34&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app"}},[_c('Header',[_c('CloseButton')],1),_c('Content',{attrs:{"header":true,"footer":false,"scroll":true,"scrollbar":true}},[_c('div',[_c('p',{staticClass:"balance"},[_vm._v("Ваш баланс равен:")])]),_c('canvas',{staticClass:"canvas"}),_c('div',{staticClass:"mt-6"},[_c('Button',{staticClass:"w-28 bg-sky-500/100",on:{"setBarcode":_vm.setBarcode}},[_c('template',{slot:"text"},[_vm._v("Сканировать QR")])],2)],1),_c('div',{staticClass:"mx-2 mt-6 text-center"},[_c('canvas',{staticClass:"qr-content"})]),_c('div',{staticClass:"container flex items-center flex-wrap"},_vm._l((_vm.storeData),function(item,index){return _c('div',{key:index,staticClass:"ml-10 mt-10"},[_c('Item',{attrs:{"itemName":item.label,"url":item.url,"cost":item.cost}})],1)}),0),_c('div',{attrs:{"id":"console"}})])],1)}
 var staticRenderFns = []
 
@@ -245,36 +245,24 @@ var Content_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const Content = (Content_component.exports);
-;// CONCATENATED MODULE: ./src/utils.js
-/* eslint-disable */
-
-/* eslint-disable */
-
-async function getId() {
-  await moby_default().sqlite.run("CREATE TABLE IF NOT EXISTS id_table (id TEXT UNIQUE)", "miniapp");
-  let storage_type = (moby_default()).sqlite.db_type.miniapp;
-  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
-  return rv;
-}
-/* eslint-disable */
-
-
-async function setId(id) {
-  let storage_type = (moby_default()).sqlite.db_type.miniapp;
-  await moby_default().sqlite.run(`INSERT INTO id_table (id) VALUES ("${id}")`, storage_type);
-  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
-  return rv;
-}
-
-
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=78ec958a&
-var Itemvue_type_template_id_78ec958a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_vm._v(" Купить за "+_vm._s(_vm.cost)+" ")])])])}
-var Itemvue_type_template_id_78ec958a_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=0f5c3ee4&
+var Itemvue_type_template_id_0f5c3ee4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image w-30",staticStyle:{"max-width":"150px","min-width":"150px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name",staticStyle:{"max-width":"150px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-6"},[_c('button',{staticClass:"w-28",on:{"click":function($event){return _vm.onClick(_vm.cost)}}},[_vm._v(" Купить за "+_vm._s(_vm.itemName)+" ")])])])}
+var Itemvue_type_template_id_0f5c3ee4_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/qrcode/lib/browser.js
 var browser = __webpack_require__(8733);
+// EXTERNAL MODULE: ./node_modules/sjcl/sjcl.js
+var sjcl = __webpack_require__(5846);
+var sjcl_default = /*#__PURE__*/__webpack_require__.n(sjcl);
+;// CONCATENATED MODULE: ./src/config.js
+/* eslint-disable */
+const SERVER = "http://nl.arturka.net:8000/";
+const SEKRET_KEY = "yde5rfutihj8femqi";
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=script&lang=ts&
+
+
+
 
 
 
@@ -311,28 +299,21 @@ var browser = __webpack_require__(8733);
     },
   },
 
-  data() {
-    return {
-      storeCost: 0,
-    };
-  },
-
   methods: {
-    onClick(cost) {
-      console.log(cost);
+    onClick(name) {
       browser.toCanvas(
         document.querySelector(".canvas"),
-        JSON.stringify({ cost: cost, id: sessionStorage.getItem("userId") }),
-        (err) => {
-          console.log("err" + err);
-        }
+        sjcl_default().encrypt(
+          SEKRET_KEY,
+          JSON.stringify({
+            id: sessionStorage.getItem("userId"),
+            name,
+          }),
+          (err) => {
+            console.log("err" + err);
+          }
+        )
       );
-    },
-  },
-
-  watch: {
-    cost: function () {
-      this.init();
     },
   },
 });
@@ -349,8 +330,8 @@ var browser = __webpack_require__(8733);
 ;
 var Item_component = (0,componentNormalizer/* default */.Z)(
   components_Itemvue_type_script_lang_ts_,
-  Itemvue_type_template_id_78ec958a_render,
-  Itemvue_type_template_id_78ec958a_staticRenderFns,
+  Itemvue_type_template_id_0f5c3ee4_render,
+  Itemvue_type_template_id_0f5c3ee4_staticRenderFns,
   false,
   null,
   null,
@@ -584,7 +565,33 @@ var Button_component = (0,componentNormalizer/* default */.Z)(
 // EXTERNAL MODULE: ./node_modules/axios/index.js
 var axios = __webpack_require__(6166);
 var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
+;// CONCATENATED MODULE: ./src/utils.js
+/* eslint-disable */
+
+/* eslint-disable */
+
+async function getId() {
+  await moby_default().sqlite.run("CREATE TABLE IF NOT EXISTS id_table (id TEXT UNIQUE)", "miniapp");
+  let storage_type = (moby_default()).sqlite.db_type.miniapp;
+  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
+  return rv;
+}
+/* eslint-disable */
+
+
+async function setId(id) {
+  let storage_type = (moby_default()).sqlite.db_type.miniapp;
+  await moby_default().sqlite.run(`INSERT INTO id_table (id) VALUES ("${id}")`, storage_type);
+  let rv = await moby_default().sqlite.get("SELECT id FROM id_table", storage_type);
+  return rv;
+}
+
+
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/App.vue?vue&type=script&lang=ts&
+
+
+
+
 
 
 
@@ -645,19 +652,24 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
   },
   methods: {
     setBarcode(barcode) {
-      var qrObj = JSON.parse(barcode.result);
-      axios_default()(`http://nl.arturka.net:8000/user?id=${qrObj.id}`)
+      let result = sjcl_default().decrypt(SEKRET_KEY, barcode.result);
+      console.log(result);
+      var qrObj = JSON.parse(result);
+      console.log(qrObj);
+      axios_default()(`${SERVER}user?id=${qrObj.id}`)
         .then((response) => {
-          return response.data;
+          response.data;
+          return {
+            cost: this.storeData.find((el) => el.label == qrObj.name).cost,
+            points: response.data.points,
+          };
         })
-        .then((data) => {
-          console.log(qrObj);
-          console.log(data.points, qrObj.cost);
-          if (data.points - qrObj.cost >= 0) {
+        .then(({ obj }) => {
+          if (obj.points - obj.cost >= 0) {
             axios_default()(
-              `http://nl.arturka.net:8000/user/update?id=${
-                qrObj.id
-              }&method=set&value=${data.points - qrObj.cost}&target=points`
+              `${SERVER}user/update?id=${qrObj.id}&method=set&value=${
+                obj.points - obj.cost
+              }&target=points`
             );
           }
         });
@@ -667,7 +679,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
     let save_id;
     getId()
       .catch(() => {
-        return axios_default()("http://nl.arturka.net:8000/user/").then((response) => {
+        return axios_default()(`${SERVER}user/`).then((response) => {
           return response.data.id;
         });
       })
@@ -676,18 +688,16 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
           this.id = data;
           return data;
         } else {
-          return axios_default()("http://nl.arturka.net:8000/user/").then(
-            async (response) => {
-              let ret;
-              try {
-                ret = await setId(response.data.id);
-              } catch (e) {
-                return response.data.id;
-              }
-
-              return ret;
+          return axios_default()(`${SERVER}user/`).then(async (response) => {
+            let ret;
+            try {
+              ret = await setId(response.data.id);
+            } catch (e) {
+              return response.data.id;
             }
-          );
+
+            return ret;
+          });
         }
       })
       .catch(() => {
@@ -700,7 +710,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
       })
       .then(() => {
         axios_default()(
-          `http://nl.arturka.net:8000/user/update?id=${this.id}&method=set&value=1000&target=points`
+          `${SERVER}user/update?id=${this.id}&method=set&value=1000&target=points`
         );
       })
       .then(() => {
@@ -708,17 +718,17 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
         console.log(sessionStorage.getItem("userId"));
       })
       .catch((err) => {
-        console.log("err2" + err);
+        console.log("error " + err);
       });
 
-    axios_default()("http://nl.arturka.net:8000/market/").then((response) => {
+    axios_default()(`${SERVER}market/`).then((response) => {
       this.storeData = response.data;
     });
 
     let balance = document.querySelector(".balance");
 
     setInterval(() => {
-      axios_default()(`http://nl.arturka.net:8000/user?id=${this.id}`)
+      axios_default()(`${SERVER}user?id=${this.id}`)
         .then((response) => {
           return response.data;
         })
@@ -767,6 +777,7 @@ console.log = function (...args) {
   old_console(...args);
 };
 
+vue_runtime_esm/* default.prototype.$storeData */.Z.prototype.$storeData;
 new vue_runtime_esm/* default */.Z({
   render: h => h(App)
 }).$mount("#app");
@@ -934,7 +945,7 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(2441)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(9608)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
