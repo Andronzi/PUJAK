@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 6037:
+/***/ 3342:
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -245,9 +245,9 @@ var Content_component = (0,componentNormalizer/* default */.Z)(
 )
 
 /* harmony default export */ const Content = (Content_component.exports);
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=e2759c44&
-var Itemvue_type_template_id_e2759c44_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image min-w-2xl",staticStyle:{"min-width":"225px"},attrs:{"src":_vm.url}}),_c('p',{staticClass:"item-block__name mt-6 text-center",staticStyle:{"max-width":"225px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")]),_c('div',{staticClass:"mt-4 flex justify-center"},[_c('button',{staticClass:"w-28 bg-sky-500/100 text-white p-2 rounded-md min-w-max",on:{"click":function($event){return _vm.onClick(_vm.itemName)}}},[_vm._v(" Купить за "+_vm._s(_vm.cost)+" ")])])])}
-var Itemvue_type_template_id_e2759c44_staticRenderFns = []
+;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=template&id=27e1de3e&
+var Itemvue_type_template_id_27e1de3e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"item-block"},[_c('img',{staticClass:"item-block__image min-w-2xl",staticStyle:{"min-width":"225px"},attrs:{"src":_vm.url}}),_c('div',{staticClass:"flex justify-center"},[_c('p',{staticClass:"item-block__name mt-6 text-center",staticStyle:{"max-width":"225px","min-height":"2em"}},[_vm._v(" "+_vm._s(_vm.itemName)+" ")])]),_c('div',{staticClass:"mt-4 flex justify-center"},[_c('button',{staticClass:"w-28 bg-sky-500/100 text-white p-2 rounded-md min-w-max",on:{"click":function($event){return _vm.onClick(_vm.itemName)}}},[_vm._v(" Купить за "+_vm._s(_vm.cost)+" ")])])])}
+var Itemvue_type_template_id_27e1de3e_staticRenderFns = []
 
 
 // EXTERNAL MODULE: ./node_modules/qrcode/lib/browser.js
@@ -260,6 +260,8 @@ var sjcl_default = /*#__PURE__*/__webpack_require__.n(sjcl);
 const SERVER = "http://nl.arturka.net:8000/";
 const SEKRET_KEY = "yde5rfutihj8femqi";
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/Item.vue?vue&type=script&lang=ts&
+
+
 
 
 
@@ -336,8 +338,8 @@ const SEKRET_KEY = "yde5rfutihj8femqi";
 ;
 var Item_component = (0,componentNormalizer/* default */.Z)(
   components_Itemvue_type_script_lang_ts_,
-  Itemvue_type_template_id_e2759c44_render,
-  Itemvue_type_template_id_e2759c44_staticRenderFns,
+  Itemvue_type_template_id_27e1de3e_render,
+  Itemvue_type_template_id_27e1de3e_staticRenderFns,
   false,
   null,
   null,
@@ -775,18 +777,16 @@ var App_component = (0,componentNormalizer/* default */.Z)(
 ;// CONCATENATED MODULE: ./src/main.js
 
 
-
-let old_console = console.log;
-
-console.log = function (...args) {
-  let da = document.getElementById("console");
-  let span = document.createElement("span");
-  span.style.display = "block";
-  let net = /.+?\n.+?\n.+?(:\d+)/.exec(new Error("da").stack.toString())[1];
-  span.innerHTML = (JSON.stringify(args).toString() + net).toString();
-  da.appendChild(span);
-  old_console(...args);
-};
+ // let old_console = console.log;
+// console.log = function (...args) {
+//   let da = document.getElementById("console");
+//   let span = document.createElement("span");
+//   span.style.display = "block";
+//   let net = /.+?\n.+?\n.+?(:\d+)/.exec(new Error("da").stack.toString())[1];
+//   span.innerHTML = (JSON.stringify(args).toString() + net).toString();
+//   da.appendChild(span);
+//   old_console(...args);
+// };
 
 vue_runtime_esm/* default.prototype.$storeData */.Z.prototype.$storeData;
 new vue_runtime_esm/* default */.Z({
@@ -956,7 +956,7 @@ new vue_runtime_esm/* default */.Z({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(6037)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [998], () => (__webpack_require__(3342)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

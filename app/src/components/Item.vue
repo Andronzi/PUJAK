@@ -5,12 +5,14 @@
       style="min-width: 225px"
       :src="url"
     />
-    <p
-      class="item-block__name mt-6 text-center"
-      style="max-width: 225px; min-height: 2em"
-    >
-      {{ itemName }}
-    </p>
+    <div class="flex justify-center">
+      <p
+        class="item-block__name mt-6 text-center"
+        style="max-width: 225px; min-height: 2em"
+      >
+        {{ itemName }}
+      </p>
+    </div>
     <div class="mt-4 flex justify-center">
       <button
         class="w-28 bg-sky-500/100 text-white p-2 rounded-md min-w-max"
