@@ -1,0 +1,36 @@
+.mrgn {
+    margin: 10px
+}
+
+.scrollable {
+    overflow: scroll;
+    height: 100%;
+}
+
+
+.listImg {
+    max-height: 200px;
+    max-width: 300px;
+}
+
+ul {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.vkuiPanel__in, .vkuiDiv, .vkuiGroup__inner {
+    height: 100%;
+}
+
+.overlapper {
+    height: 100%;
+    width: 100%;
+    background-color: cadetblue;
+}
