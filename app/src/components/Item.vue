@@ -1,15 +1,17 @@
 <template>
   <div class="item-block">
-    <img
-      class="item-block__image w-30"
-      :src="url"
-      style="max-width: 150px; min-width: 150px"
-    />
-    <p class="item-block__name" style="max-width: 150px; min-height: 2em">
+    <img class="item-block__image min-w-2xl" :src="url" />
+    <p
+      class="item-block__name mt-6 text-center"
+      style="max-width: 150px; min-height: 2em"
+    >
       {{ itemName }}
     </p>
-    <div class="mt-6">
-      <button class="w-28" v-on:click="onClick(itemName)">
+    <div class="mt-4 flex justify-center">
+      <button
+        class="w-28 bg-sky-500/100 text-white p-2 rounded-md min-w-max"
+        v-on:click="onClick(itemName)"
+      >
         Купить за {{ cost }}
       </button>
     </div>

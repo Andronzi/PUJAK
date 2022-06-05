@@ -5,23 +5,21 @@
     </Header>
     <Content :header="true" :footer="false" :scroll="true" :scrollbar="true">
       <div>
-        <p class="balance">Ваш баланс равен:</p>
+        <p class="balance text-lg text-center">Ваш баланс равен:</p>
       </div>
-      <canvas class="canvas"></canvas>
-      <div class="mt-6">
-        <Button class="w-28 bg-sky-500/100" @setBarcode="setBarcode">
+      <div class="flex items-center justify-center">
+        <canvas class="canvas max-w-sm"></canvas>
+      </div>
+      <div class="mt-6 flex items-center justify-center">
+        <Button
+          class="w-28 bg-sky-500/100 container flex items-center justify-center"
+          @setBarcode="setBarcode"
+        >
           <template slot="text">Сканировать QR</template>
         </Button>
       </div>
-      <div class="mx-2 mt-6 text-center">
-        <canvas class="qr-content"></canvas>
-      </div>
-      <div class="container flex items-center flex-wrap">
-        <div
-          :key="index"
-          v-for="(item, index) in storeData"
-          class="ml-10 mt-10"
-        >
+      <div class="flex items-center justify-center flex-wrap">
+        <div :key="index" v-for="(item, index) in storeData" class="mt-10">
           <Item :itemName="item.label" :url="item.url" :cost="item.cost"></Item>
         </div>
       </div>

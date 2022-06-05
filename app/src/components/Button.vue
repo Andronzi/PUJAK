@@ -2,11 +2,11 @@
   <button
     id="buy-button"
     style="min-width: 150px"
-    class="text-center px-4 py-2 rounded-md transition-all shadow-md font-normal"
+    class="text-center px-4 py-2 bg-sky-500/100 rounded-md transition-all shadow-md font-normal"
     :class="
       danger
-        ? 'bg-white ring-red-500 active:ring-red-400 active:bg-red-50 m-0.5'
-        : 'text-white bg-orange-500 ring-orange-500 bg-sky-500/100 active:ring-orange-400'
+        ? 'bg-sky-500/100 active:ring-red-400 active:bg-red-50 m-0.5'
+        : 'text-white bg-sky-500/100 bg-sky-500/100'
     "
     @click="onClick(cost)"
   >
@@ -20,7 +20,7 @@
         <slot name="icon" />
       </div>
       <div
-        class="text-base text-center w-full transition-padding"
+        class="text-base text-center w-full container flex items-center justify-center transition-padding"
         :class="isLoading || $slots.icon ? 'pl-9 -ml-7' : ''"
       >
         <slot name="text" />
