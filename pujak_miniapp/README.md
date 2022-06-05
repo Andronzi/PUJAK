@@ -2,6 +2,9 @@
 
 # Create VK Mini App [![npm][npm]][npm-url] [![deps][deps]][deps-url]
 
+## Live link:
+# https://vk.com/app8185720
+
 ## How to use
 
 ### With NPX

@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.38ba663d.chunk.css",
+    "main.js": "/static/js/main.d622390e.chunk.js",
+    "main.js.map": "/static/js/main.d622390e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.cf1a3862.js",
+    "runtime-main.js.map": "/static/js/runtime-main.cf1a3862.js.map",
+    "static/css/2.170ca112.chunk.css": "/static/css/2.170ca112.chunk.css",
+    "static/js/2.4916430d.chunk.js": "/static/js/2.4916430d.chunk.js",
+    "static/js/2.4916430d.chunk.js.map": "/static/js/2.4916430d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.170ca112.chunk.css.map": "/static/css/2.170ca112.chunk.css.map",
+    "static/css/main.38ba663d.chunk.css.map": "/static/css/main.38ba663d.chunk.css.map",
+    "static/js/2.4916430d.chunk.js.LICENSE.txt": "/static/js/2.4916430d.chunk.js.LICENSE.txt",
+    "static/media/beach.jpg": "/static/media/beach.17420fb7.jpg",
+    "static/media/corporate_partyjpg.jpg": "/static/media/corporate_partyjpg.243fb552.jpg",
+    "static/media/embassy.jpg": "/static/media/embassy.ca5afa3d.jpg",
+    "static/media/hospital.jpg": "/static/media/hospital.ed56359c.jpg",
+    "static/media/ocean_liner.jpg": "/static/media/ocean_liner.36fa27c6.jpg",
+    "static/media/orbital_station.jpg": "/static/media/orbital_station.24b1e6c2.jpg",
+    "static/media/partisan_detachment.jpg": "/static/media/partisan_detachment.ca0d19e2.jpg",
+    "static/media/pirate_ship.jpg": "/static/media/pirate_ship.b5ddfb1f.jpg",
+    "static/media/polar_station.jpg": "/static/media/polar_station.25b5eb1e.jpg",
+    "static/media/police_station.jpg": "/static/media/police_station.1be3b703.jpg",
+    "static/media/spa.jpg": "/static/media/spa.fce20db7.jpg",
+    "static/media/studio.jpg": "/static/media/studio.25af27ff.jpg",
+    "static/media/submarine.jpg": "/static/media/submarine.21c2cf71.jpg",
+    "static/media/supermarket.jpg": "/static/media/supermarket.6e88394d.jpg",
+    "static/media/terrorist_base.jpg": "/static/media/terrorist_base.b2578e7d.jpg",
+    "static/media/theater.jpg": "/static/media/theater.42c7b153.jpg",
+    "static/media/university.jpg": "/static/media/university.e03166b2.jpg",
+    "static/media/vegetable_warehouse.jpg": "/static/media/vegetable_warehouse.02bef6c3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cf1a3862.js",
+    "static/css/2.170ca112.chunk.css",
+    "static/js/2.4916430d.chunk.js",
+    "static/css/main.38ba663d.chunk.css",
+    "static/js/main.d622390e.chunk.js"
+  ]
+}
