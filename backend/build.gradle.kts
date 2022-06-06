@@ -7,6 +7,7 @@ plugins {
     application
     kotlin("jvm") version "1.6.21"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.6.21"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "net.arturka"
@@ -50,4 +51,10 @@ dependencies {
     implementation("dev.forst", "ktor-rate-limiting", "1.3.3")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "net.arturka.ApplicationKt"
+    }
 }

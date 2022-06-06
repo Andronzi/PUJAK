@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run" type="KtorApplicationConfigurationType" factoryName="Ktor">
-    <module name="backend" />
+    <module name="backend.main" />
     <option name="alternativeJrePath" value="17" />
     <option name="alternativeJrePathEnabled" value="true" />
     <option name="includeProvidedScope" value="true" />
-    <option name="mainClass" value="main.kotlin.net.arturka.ApplicationKt" />
+    <option name="mainClass" value="net.arturka.ApplicationKt" />
     <option name="passParentEnvs" value="true" />
     <option name="programParameters" value="" />
     <option name="shortenCommandLine" value="NONE" />
